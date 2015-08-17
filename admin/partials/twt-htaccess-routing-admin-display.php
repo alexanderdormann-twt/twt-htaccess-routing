@@ -5,7 +5,7 @@
  *
  * This file is used to markup the admin-facing aspects of the plugin.
  *
- * @link       http://example.com
+ * @link       http://twt.de
  * @since      1.0.0
  *
  * @package    TWT_Htaccess_Routing
@@ -19,16 +19,36 @@
  */
 $plugin = $this;
 ?>
-<div class="wrap">
+<div class="wrap twt-htaccess-routing">
     <h2><?php echo __('.htaccess-based Routing', $plugin->get_text_domain()); ?></h2>
 
     <div class="stuffbox">
         <h3>
-            <span>Headline</span>
+            <span><?php echo __('Actions', $plugin->get_text_domain()); ?></span>
         </h3>
         <div class="inside">
-            inside
+            <a class="button button-primary button-large" href="<?php echo $plugin->get_flush_action_url(); ?>">
+                <?php echo __('Flush Rules to .htaccess', $plugin->get_text_domain()); ?>
+            </a>
         </div>
+    </div>
+
+    <div class="stuffbox">
+        <h3>
+            <span><?php echo __('Current Htaccess', $plugin->get_text_domain()); ?></span>
+        </h3>
+        <textarea class="stuffbox-content" disabled="disabled"><?php
+            echo $plugin->get_htaccess();
+        ?></textarea>
+    </div>
+
+    <div class="stuffbox">
+        <h3>
+            <span><?php echo __('Rule Preview', $plugin->get_text_domain()); ?></span>
+        </h3>
+        <textarea class="stuffbox-content" disabled="disabled"><?php
+            echo $plugin->get_verbose_wp_rewrite()->mod_rewrite_rules();
+        ?></textarea>
     </div>
 
     <footer class="twt-plugin-footer">
@@ -43,8 +63,3 @@ $plugin = $this;
         </p>
     </footer>
 </div>
-<pre>
-<?php
-echo($plugin->get_wp_rewrite()->mod_rewrite_rules());
-?>
-    </pre>

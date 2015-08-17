@@ -1,3 +1,28 @@
+/**
+ * Main component
+ */
+.twt-htaccess-routing .stuffbox h3 {
+    margin: 0 0 12px 0;
+    padding-left: 12px;
+    line-height: 2.75em;
+    border-bottom: 1px solid #eee;
+    background-color: #f9f9f9;
+    font-size: 1.1em;
+}
+
+.twt-htaccess-routing textarea.stuffbox-content {
+    width: 100%;
+    height: 250px;
+    font-family: monospace;
+    color: #444;
+    background-color: #f7f7f7;
+    margin-top: -13px;
+    margin-bottom: -2px;
+}
+
+/**
+ * Copyright footer
+ */
 .twt-plugin-footer {
     text-align: center;
 }
@@ -5,7 +30,9 @@
 .twt-plugin-footer img {
     display: inline-block;
     width: 64px;
-    margin: .75em 1em .75em 0;
+    margin: 0 1em 0 0;
+    position: relative;
+    top: -4px;
 }
 
 .twt-copy {

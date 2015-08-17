@@ -111,7 +111,7 @@ class TWT_Htaccess_Routing_Admin {
 			__( 'Routing', $this->plugin_name ),
 			__( 'Routing', $this->plugin_name ),
 			'manage_options',
-			'twt-htaccess-routing',
+			$this->plugin_name,
 			[ $this, 'option_page' ]
 		);
 	}
@@ -175,5 +175,34 @@ class TWT_Htaccess_Routing_Admin {
 	 */
 	public function get_text_domain() {
 		return TWT_Htaccess_Routing::get_instance()->get_plugin_name();
+	}
+
+	/**
+	 * Fetch the complete .htaccess content
+	 *
+	 * @since  1.0.0
+	 * @return string  .htaccess content
+	 */
+	public function get_htaccess() {
+		return file_get_contents( $this->get_htaccess_path() );
+	}
+
+	/**
+	 * Returns the path to WordPress' main .htaccess file
+	 *
+	 * @since  1.0.0
+	 * @return string   The path to WordPress' main .htaccess file
+	 */
+	public function get_htaccess_path() {
+		return trailingslashit( ABSPATH ) . '.htaccess';
+	}
+
+	/**
+	 * Construct an URL to flush rules into our htaccess
+	 *
+	 * @return string
+	 */
+	public function get_flush_action_url() {
+		return '?page=' . $this->plugin_name . '&' . 'flush=1';
 	}
 }

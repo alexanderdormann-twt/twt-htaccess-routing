@@ -68,7 +68,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-twt-htaccess-routing.php';
  */
 function run_twt_htaccess_routing() {
 
-	$plugin = new TWT_Htaccess_Routing();
+	$plugin = TWT_Htaccess_Routing::get_instance();
 	$plugin->run();
 
 }

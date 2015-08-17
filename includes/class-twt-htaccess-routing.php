@@ -28,6 +28,14 @@
  * @author     Alexander Dormann, TWT Interactive GmbH <alexander.dormann@twt.de>
  */
 class TWT_Htaccess_Routing {
+	/**
+	 * Singleton instance holder
+	 *
+	 * @since  1.0.0
+	 * @access private
+	 * @var    TWT_Htaccess_Routing  $instance     singleton object
+	 */
+	private static $instance;
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -58,6 +66,21 @@ class TWT_Htaccess_Routing {
 	protected $version;
 
 	/**
+	 * Singleton getter method. Returns the instance of our plugin or creates it.
+	 *
+	 * @since  1.0.0
+	 * @return TWT_Htaccess_Routing
+	 */
+	public static function get_instance() {
+		if( self::$instance instanceof TWT_Htaccess_Routing ) {
+			return self::$instance;
+		}
+
+		self::$instance = new TWT_Htaccess_Routing();
+		return self::$instance;
+	}
+
+	/**
 	 * Define the core functionality of the plugin.
 	 *
 	 * Set the plugin name and the plugin version that can be used throughout the plugin.
@@ -65,8 +88,9 @@ class TWT_Htaccess_Routing {
 	 * the public-facing side of the site.
 	 *
 	 * @since    1.0.0
+	 * @access   private
 	 */
-	public function __construct() {
+	private function __construct() {
 
 		$this->plugin_name = 'twt-htaccess-routing';
 		$this->version = '1.0.0';

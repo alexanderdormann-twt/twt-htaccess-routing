@@ -101,4 +101,25 @@ class TWT_Htaccess_Routing_Admin {
 
 	}
 
+	/**
+	 * Register the administration pages
+	 *
+	 * @since 1.0.0
+	 */
+	public function admin_menu() {
+		add_options_page(
+			__( 'Routing', $this->plugin_name ),
+			__( 'Routing', $this->plugin_name ),
+			'manage_options',
+			'twt-htaccess-routing',
+			[ $this, 'option_page' ]
+		);
+	}
+
+	/**
+	 *
+	 */
+	public function option_page() {
+		include dirname( __FILE__ ) . '/partials/twt-htaccess-routing-admin-display.php';
+	}
 }

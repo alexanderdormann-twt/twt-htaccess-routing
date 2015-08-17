@@ -18,7 +18,7 @@
  *
  * @package    TWT_Htaccess_Routing
  * @subpackage TWT_Htaccess_Routing/admin
- * @author     Your Name <email@example.com>
+ * @author     Alexander Dormann, TWT Interactive GmbH <alexander.dormann@twt.de>
  */
 class TWT_Htaccess_Routing_Admin {
 
@@ -44,8 +44,9 @@ class TWT_Htaccess_Routing_Admin {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
+	 *
+	 * @param      string    $plugin_name  The name of this plugin.
+	 * @param      string    $version      The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 

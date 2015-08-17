@@ -19,7 +19,7 @@
  *
  * @package    TWT_Htaccess_Routing
  * @subpackage TWT_Htaccess_Routing/includes
- * @author     Your Name <email@example.com>
+ * @author     Alexander Dormann, TWT Interactive GmbH <alexander.dormann@twt.de>
  */
 class TWT_Htaccess_Routing_Loader {
 

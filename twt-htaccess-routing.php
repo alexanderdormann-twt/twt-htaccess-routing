@@ -34,7 +34,7 @@ if ( ! defined( 'WPINC' ) ) {
  * The code that runs during plugin activation.
  * This action is documented in includes/class-twt-htaccess-routing-activator.php
  */
-function activate_plugin_name() {
+function activate_twt_htaccess_routing() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-twt-htaccess-routing-activator.php';
 	TWT_Htaccess_Routing_Activator::activate();
 }
@@ -43,13 +43,13 @@ function activate_plugin_name() {
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-twt-htaccess-routing-deactivator.php
  */
-function deactivate_plugin_name() {
+function deactivate_twt_htaccess_routing() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-twt-htaccess-routing-deactivator.php';
 	TWT_Htaccess_Routing_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_plugin_name' );
-register_deactivation_hook( __FILE__, 'deactivate_plugin_name' );
+register_activation_hook( __FILE__, 'activate_twt_htaccess_routing' );
+register_deactivation_hook( __FILE__, 'deactivate_twt_htaccess_routing' );
 
 /**
  * The core plugin class that is used to define internationalization,
@@ -66,10 +66,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-twt-htaccess-routing.php';
  *
  * @since    1.0.0
  */
-function run_plugin_name() {
+function run_twt_htaccess_routing() {
 
 	$plugin = new TWT_Htaccess_Routing();
 	$plugin->run();
 
 }
-run_plugin_name();
+run_twt_htaccess_routing();

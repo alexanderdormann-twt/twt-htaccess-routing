@@ -18,7 +18,7 @@
  *
  * @package    TWT_Htaccess_Routing
  * @subpackage TWT_Htaccess_Routing/public
- * @author     Your Name <email@example.com>
+ * @author     Alexander Dormann, TWT Interactive GmbH <alexander.dormann@twt.de>
  */
 class TWT_Htaccess_Routing_Public {
 
@@ -27,9 +27,9 @@ class TWT_Htaccess_Routing_Public {
 	 *
 	 * @since    1.0.0
 	 * @access   private
-	 * @var      string    $plugin_name    The ID of this plugin.
+	 * @var      string    $twt_htaccess_routing    The ID of this plugin.
 	 */
-	private $plugin_name;
+	private $twt_htaccess_routing;
 
 	/**
 	 * The version of this plugin.
@@ -44,12 +44,12 @@ class TWT_Htaccess_Routing_Public {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of the plugin.
+	 * @param      string    $twt_htaccess_routing       The name of the plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
-	public function __construct( $plugin_name, $version ) {
+	public function __construct( $twt_htaccess_routing, $version ) {
 
-		$this->plugin_name = $plugin_name;
+		$this->twt_htaccess_routing = $twt_htaccess_routing;
 		$this->version = $version;
 
 	}
@@ -73,7 +73,7 @@ class TWT_Htaccess_Routing_Public {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/twt-htaccess-routing-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->twt_htaccess_routing, plugin_dir_url( __FILE__ ) . 'css/twt-htaccess-routing-public.css', array(), $this->version, 'all' );
 
 	}
 
@@ -96,7 +96,7 @@ class TWT_Htaccess_Routing_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/twt-htaccess-routing-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->twt_htaccess_routing, plugin_dir_url( __FILE__ ) . 'js/twt-htaccess-routing-public.js', array( 'jquery' ), $this->version, false );
 
 	}
 

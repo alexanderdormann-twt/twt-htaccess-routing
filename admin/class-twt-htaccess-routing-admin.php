@@ -168,4 +168,12 @@ class TWT_Htaccess_Routing_Admin {
 
 		return $rewrites;
 	}
+
+	/**
+	 * @since  1.0.0
+	 * @return string Returns the text domain used in localization methods
+	 */
+	public function get_text_domain() {
+		return TWT_Htaccess_Routing::get_instance()->get_plugin_name();
+	}
 }

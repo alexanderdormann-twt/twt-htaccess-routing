@@ -1,4 +1,20 @@
-/**
- * All of the CSS for your admin-specific functionality should be
- * included in this file.
- */
+.twt-plugin-footer {
+    text-align: center;
+}
+
+.twt-plugin-footer img {
+    display: inline-block;
+    width: 64px;
+    margin: .75em 1em .75em 0;
+}
+
+.twt-copy {
+    font-size: .9em;
+    text-align: left;
+    display: inline-block;
+}
+
+.twt-copy .twt-apply-now {
+    display: block;
+    font-size: .9em;
+}

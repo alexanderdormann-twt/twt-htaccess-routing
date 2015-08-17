@@ -117,7 +117,9 @@ class TWT_Htaccess_Routing_Admin {
 	}
 
 	/**
+	 * Render our option page
 	 *
+	 * @since 1.0.0
 	 */
 	public function option_page() {
 		include dirname( __FILE__ ) . '/partials/twt-htaccess-routing-admin-display.php';

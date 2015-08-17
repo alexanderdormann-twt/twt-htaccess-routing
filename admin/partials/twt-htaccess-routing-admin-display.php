@@ -20,7 +20,7 @@
 $plugin = $this;
 ?>
 <div class="wrap">
-    <h2><?php __('.htaccess-based Routing', $plugin->plugin_name); ?></h2>
+    <h2><?php echo __('.htaccess-based Routing', $plugin->get_text_domain()); ?></h2>
 
     <div class="stuffbox">
         <h3>
@@ -43,3 +43,8 @@ $plugin = $this;
         </p>
     </footer>
 </div>
+<pre>
+<?php
+echo($plugin->get_wp_rewrite()->mod_rewrite_rules());
+?>
+    </pre>

@@ -117,6 +117,17 @@ class TWT_Htaccess_Routing_Admin {
 	}
 
 	/**
+	 * admin_init hook. Checks for form submission.
+	 *
+	 * @since 1.0.0
+	 */
+	public function admin_init() {
+		if ( isset( $_GET['flush'] ) && isset( $_GET['page'] ) && $_GET['page'] == $this->plugin_name && intval( $_GET['flush'] ) === 1 ) {
+			$this->handle_submission();
+		}
+	}
+
+	/**
 	 * Render our option page
 	 *
 	 * @since 1.0.0
@@ -204,5 +215,20 @@ class TWT_Htaccess_Routing_Admin {
 	 */
 	public function get_flush_action_url() {
 		return '?page=' . $this->plugin_name . '&' . 'flush=1';
+	}
+
+	protected function handle_submission() {
+		global $wp_rewrite;
+
+		$original_wp_rewrite = $this->get_wp_rewrite();
+		$verbose_wp_rewrite = $this->get_verbose_wp_rewrite();
+
+		$wp_rewrite = $verbose_wp_rewrite;
+		$wp_rewrite->flush_rules(true);
+
+		$wp_rewrite = $original_wp_rewrite;
+		echo "success!!!";
+
+		//die('lol');
 	}
 }

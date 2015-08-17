@@ -122,6 +122,50 @@ class TWT_Htaccess_Routing_Admin {
 	 * @since 1.0.0
 	 */
 	public function option_page() {
-		include dirname( __FILE__ ) . '/partials/twt-htaccess-routing-admin-display.php';
+		include plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/twt-htaccess-routing-admin-display.php';
+	}
+
+	/**
+	 * Returns the WP_Rewrite API from global namespace, configured by the
+	 * user via Settings -> Permalinks and WordPress' own auto detection.
+	 *
+	 * This object may or may not have verbose_rules enabled. WP_Rewrite::$use_verbose_rules
+	 * controls whether all WP Rewrites are persisted into our htaccess file. Normally,
+	 * this is done based on the permastruct specified by the WordPress administrator.
+	 *
+	 * As a rule of thumb, Permastructs beginning with or only consisting of %postname%
+	 * will result in WP_Rewrite::$use_verbose_rules = true.
+	 *
+	 * @since  1.0.0
+	 * @return WP_Rewrite  An unmodified instance of the global WP_Rewrite object
+	 */
+	public function get_wp_rewrite() {
+		global $wp_rewrite;
+		return $wp_rewrite;
+	}
+
+	/**
+	 * WP_Rewrite may or may not have verbose_rules enabled. WP_Rewrite::$use_verbose_rules
+	 * controls whether all WP Rewrites are persisted into our htaccess file. Normally,
+	 * this is done based on the permastruct specified by the WordPress administrator.
+	 *
+	 * However, in order to let WordPress generate all Apache Rewrite rules, we need to ensure
+	 * WP_Rewrite::$use_verbose_rules and WP_Rewrite::$use_verbose_page_rules are set to
+	 * true.
+	 *
+	 * As a result, this method clones the global WP_Rewrite object and modified those two
+	 * properties.
+	 *
+	 * @since  1.0.0
+	 * @return WP_Rewrite  A potentially modified instance of WP_Rewrites with verbose_rules enabled
+	 */
+	public function get_verbose_wp_rewrite() {
+		global $wp_rewrite;
+
+		$rewrites = clone $wp_rewrite;
+		$rewrites->use_verbose_rules = true;
+		$rewrites->use_verbose_page_rules = true;
+
+		return $rewrites;
 	}
 }

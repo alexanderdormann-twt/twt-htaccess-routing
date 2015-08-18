@@ -12,12 +12,44 @@
 
 .twt-htaccess-routing textarea.stuffbox-content {
     width: 100%;
-    height: 250px;
+    height: 500px;
     font-family: monospace;
     color: #444;
-    background-color: #f7f7f7;
-    margin-top: -13px;
-    margin-bottom: -2px;
+    background-color: #f9f9f9;
+    margin-bottom: -3px;
+    line-height: 1.4em;
+    padding: 24px;
+}
+
+.twt-htaccess-routing .twt-btn-commit {
+    float: right;
+}
+
+.twt-htaccess-routing .nav-tab-active {
+    background-color: #fff;
+    border-bottom-color: #fff;
+}
+
+.twt-htaccess-routing .nav-tab {
+    border-bottom-width: 1px;
+}
+
+.twt-htaccess-routing .nav-tab:focus,
+.twt-htaccess-routing .nav-tab:active {
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    color: #000;
+}
+
+.twt-htaccess-routing [rel="tab-content"] {
+    border-color: #ccc;
+    border-top-width: 0;
+}
+
+.twt-htaccess-routing [rel="tab-content"] .inside {
+    padding: 24px;
 }
 
 /**

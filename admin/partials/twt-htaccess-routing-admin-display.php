@@ -22,30 +22,29 @@ $plugin = $this;
 <div class="wrap twt-htaccess-routing">
     <h2><?php echo __('.htaccess-based Routing', $plugin->get_text_domain()); ?></h2>
 
-    <div class="stuffbox">
-        <h3>
-            <span><?php echo __('Actions', $plugin->get_text_domain()); ?></span>
-        </h3>
+    <a class="button button-primary button-large twt-btn-commit" href="<?php echo $plugin->get_flush_action_url(); ?>">
+        <?php echo __('Flush Rules to .htaccess', $plugin->get_text_domain()); ?>
+    </a>
+
+    <h2 class="nav-tab-wrapper">
+        <a href="#status" class="nav-tab nav-tab-active"><?php echo __('Status Board', $plugin->get_text_domain()); ?></a>
+        <a href="#htaccess" class="nav-tab"><?php echo __('Current .htaccess', $plugin->get_text_domain()); ?></a>
+        <a href="#preview" class="nav-tab"><?php echo __('Rule Preview', $plugin->get_text_domain()); ?></a>
+    </h2>
+
+    <div rel="tab-content" class="stuffbox" id="status">
         <div class="inside">
-            <a class="button button-primary button-large" href="<?php echo $plugin->get_flush_action_url(); ?>">
-                <?php echo __('Flush Rules to .htaccess', $plugin->get_text_domain()); ?>
-            </a>
+            miaus
         </div>
     </div>
 
-    <div class="stuffbox">
-        <h3>
-            <span><?php echo __('Current Htaccess', $plugin->get_text_domain()); ?></span>
-        </h3>
+    <div rel="tab-content" class="stuffbox" id="htaccess">
         <textarea class="stuffbox-content" disabled="disabled"><?php
             echo $plugin->get_htaccess();
         ?></textarea>
     </div>
 
-    <div class="stuffbox">
-        <h3>
-            <span><?php echo __('Rule Preview', $plugin->get_text_domain()); ?></span>
-        </h3>
+    <div rel="tab-content" class="stuffbox" id="preview">
         <textarea class="stuffbox-content" disabled="disabled"><?php
             echo $plugin->get_verbose_wp_rewrite()->mod_rewrite_rules();
         ?></textarea>
@@ -62,4 +61,8 @@ $plugin = $this;
             </span>
         </p>
     </footer>
+
+    <pre>
+        <?php var_dump($plugin->get_verbose_wp_rewrite()); ?>
+    </pre>
 </div>

@@ -1,32 +1,26 @@
 (function( $ ) {
 	'use strict';
 
-	/**
-	 * All of the code for your admin-specific JavaScript source
-	 * should reside in this file.
-	 *
-	 * Note that this assume you're going to use jQuery, so it prepares
-	 * the $ function reference to be used within the scope of this
-	 * function.
-	 *
-	 * From here, you're able to define handlers for when the DOM is
-	 * ready:
-	 *
-	 * $(function() {
-	 *
-	 * });
-	 *
-	 * Or when the window is loaded:
-	 *
-	 * $( window ).load(function() {
-	 *
-	 * });
-	 *
-	 * ...and so on.
-	 *
-	 * Remember that ideally, we should not attach any more than a single DOM-ready or window-load handler
-	 * for any particular page. Though other scripts in WordPress core, other plugins, and other themes may
-	 * be doing this, we should try to minimize doing that in our own work.
-	 */
+	$(document).ready(function() {
+		var $tabs = $('.twt-htaccess-routing .nav-tab');
+		var $tab_container = $('.twt-htaccess-routing [rel="tab-content"]');
+		var initial_open_tab_selector = $tabs.filter('.nav-tab-active').attr('href');
 
+		$tab_container.hide();
+		$(initial_open_tab_selector).show();
+
+		$tabs.on('click', function(e) {
+			e.preventDefault();
+
+			var $target_tab = $(this);
+			var target_container_selector = $target_tab.attr('href');
+			var $target_container = $(target_container_selector);
+
+			$tab_container.hide();
+			$target_container.show();
+
+			$tabs.removeClass('nav-tab-active');
+			$target_tab.addClass('nav-tab-active');
+		});
+	});
 })( jQuery );

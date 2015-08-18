@@ -34,7 +34,60 @@ $plugin = $this;
 
     <div rel="tab-content" class="stuffbox" id="status">
         <div class="inside">
-            miaus
+            <h3>Stats</h3>
+            <div class="twt-row">
+                <div class="col-33">
+                    <div class="count">
+                        <span class="number"><?php echo count($plugin->get_wp_rewrite()->wp_rewrite_rules()); ?></span>
+                        <span class="label"><?php echo __('Rules', $plugin->get_text_domain()); ?></span>
+                    </div>
+                </div>
+                <div class="col-33">
+                    <div class="count">
+                        <span class="number"><?php echo count($plugin->get_wp_rewrite()->non_wp_rules); ?></span>
+                        <span class="label"><?php echo __('Non-WP Rules', $plugin->get_text_domain()); ?></span>
+                    </div>
+                </div>
+                <div class="col-33">
+                    <div class="count">
+                        <span class="number"><?php echo count($plugin->get_wp_rewrite()->extra_permastructs); ?></span>
+                        <span class="label"><?php echo __('Permastructs', $plugin->get_text_domain()); ?></span>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Settings</h3>
+
+            <table class="twt-table-striped">
+                <thead class="twt-hidden">
+                    <tr>
+                        <th width="250"><?php echo __('Setting', $plugin->get_text_domain()); ?></th>
+                        <th><?php echo __('Value', $plugin->get_text_domain()); ?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="label"><?php echo __('Permalink Structure', $plugin->get_text_domain()); ?></td>
+                        <td class="twt-mono"><?php echo $plugin->get_wp_rewrite()->permalink_structure; ?></td>
+                    </tr>
+                    <tr>
+                        <td class="label"><?php echo __('Trailing Slashes Enabled', $plugin->get_text_domain()); ?></td>
+                        <td class="twt-mono"><?php echo $plugin->get_wp_rewrite()->use_trailing_slashes ? __('Yes') : __('No'); ?></td>
+                    </tr>
+                    <tr>
+                        <td class="label"><?php echo __('Author Base', $plugin->get_text_domain()); ?></td>
+                        <td class="twt-mono"><?php echo $plugin->get_wp_rewrite()->author_base; ?></td>
+                    </tr>
+                    <tr>
+                        <td class="label"><?php echo __('Verbose Rules Enabled', $plugin->get_text_domain()); ?></td>
+                        <td class="twt-mono"><?php echo $plugin->get_wp_rewrite()->use_verbose_rules ? __('Yes') : __('No'); ?></td>
+                    </tr>
+                    <tr>
+                        <td class="label"><?php echo __('Possible Permalink Placeholder', $plugin->get_text_domain()); ?></td>
+                        <td class="twt-mono"><?php echo implode('<br />', $plugin->get_wp_rewrite()->rewritecode); ?></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -61,8 +114,4 @@ $plugin = $this;
             </span>
         </p>
     </footer>
-
-    <pre>
-        <?php var_dump($plugin->get_verbose_wp_rewrite()); ?>
-    </pre>
 </div>

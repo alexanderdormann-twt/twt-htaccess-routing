@@ -108,8 +108,8 @@ class TWT_Htaccess_Routing_Admin {
 	 */
 	public function admin_menu() {
 		add_options_page(
-			__( 'Routing', $this->plugin_name ),
-			__( 'Routing', $this->plugin_name ),
+			__( '.htaccess Routing', $this->plugin_name ),
+			__( '.htaccess Routing', $this->plugin_name ),
 			'manage_options',
 			$this->plugin_name,
 			[ $this, 'option_page' ]

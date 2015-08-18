@@ -1,15 +1,6 @@
 /**
  * Main component
  */
-.twt-htaccess-routing .stuffbox h3 {
-    margin: 0 0 12px 0;
-    padding-left: 12px;
-    line-height: 2.75em;
-    border-bottom: 1px solid #eee;
-    background-color: #f9f9f9;
-    font-size: 1.1em;
-}
-
 .twt-htaccess-routing textarea.stuffbox-content {
     width: 100%;
     height: 500px;
@@ -50,6 +41,41 @@
 
 .twt-htaccess-routing [rel="tab-content"] .inside {
     padding: 24px;
+}
+
+.twt-row:before,
+.twt-row:after {
+    content: " ";
+    display: table;
+}
+
+.twt-row:after {
+    clear: both;
+}
+
+.twt-row {
+    *zoom: 1;
+}
+
+.twt-row .col-33 {
+    width: 33%;
+    box-sizing: border-box;
+    float: left;
+}
+
+.twt-hidden {
+    display: none;
+}
+
+
+.twt-htaccess-routing td.label {
+    font-weight: bold;
+    line-height: 2em;
+    vertical-align: top;
+}
+
+.twt-mono {
+    font-family: monospace;
 }
 
 /**

@@ -16,7 +16,7 @@
  * Plugin Name:       TWT .htaccess Routing
  * Plugin URI:        http://twt.de
  * Description:       Dump all your rewrite rules to htaccess
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Alexander Dormann, TWT Interactive GmbH
  * Author URI:        http://twt.de
  * License:           GPL-2.0+

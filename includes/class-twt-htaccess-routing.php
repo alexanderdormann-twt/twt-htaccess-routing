@@ -174,6 +174,7 @@ class TWT_Htaccess_Routing {
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'admin_menu' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'admin_init' );
 
+		$this->loader->add_filter( 'mod_rewrite_rules', $plugin_admin, 'mod_rewrite_rules' );
 	}
 
 	/**

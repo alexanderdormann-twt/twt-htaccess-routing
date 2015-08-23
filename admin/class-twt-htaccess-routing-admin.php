@@ -137,6 +137,31 @@ class TWT_Htaccess_Routing_Admin {
 	}
 
 	/**
+	 * mod_rewrite_rules filter. Replaces PHP $match variables with apache placeholders ad
+	 * $matches[1] should be $1 in apache rules.
+	 *
+	 * Also, within .htaccess, the removed prefix always ends with a slash, meaning the matching
+	 * occurs against a string which never has a leading slash. Therefore, a Pattern with ^/
+	 * never matches in per-directory context.
+	 * @see http://httpd.apache.org/docs/2.4/mod/mod_rewrite.html#rewriterule for futher info on this
+	 *
+	 * As a result, we'll need to remove all Start-of-Line markers. End-of-line still works as expected.
+	 *
+	 * @since   1.0.1
+	 * @param   $rules  string  Apache RewriteRule directives with potential php match replacements
+	 * @return  string          Rules with proper apache replacements
+	 */
+	public function mod_rewrite_rules( $rules ) {
+		// fix replacement markers
+		$rules = preg_replace( "/matches\\[(\\d+)\\]/u", "$1", $rules );
+
+		// fix per-directory rules
+		$rules = preg_replace( "/RewriteRule \\^/u", "RewriteRule ", $rules );
+
+		return $rules;
+	}
+
+	/**
 	 * Returns the WP_Rewrite API from global namespace, configured by the
 	 * user via Settings -> Permalinks and WordPress' own auto detection.
 	 *

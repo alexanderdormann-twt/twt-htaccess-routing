@@ -1,114 +1,71 @@
-=== Plugin Name ===
-Contributors: (this should be a list of wordpress.org userid's)
-Donate link: http://example.com/
-Tags: comments, spam
-Requires at least: 3.0.1
-Tested up to: 3.4
+=== TWT .htaccess Routing ===
+Contributors: adormann
+Tags: routing, htaccess
+Requires at least: 4.2
+Tested up to: 4.3
 Stable tag: 4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+Takes all WP_Rewrite rules and pushes them info your .htaccess file, offloading your complete routing
+to the webserver instead of PHP.
 
 == Description ==
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
+This plugin implements a new menu item within Admin -> Settings called ".htaccess Routing". This item
+can be seen by all users with the manage_options capability.
 
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+In this section, you'll have the ability to get an overview about your current rules, routes and
+prefixes. TWT .htaccess Routing does not aim to list, let alone search through, all of them, as there are
+already awesome plugins for this matter (like Monkeyman's Rewrite Analyzer).
 
-A few notes about the sections above:
+You are able to get a look into your current .htaccess file and get a preview of all routes we'd shove
+into it.
 
-*   "Contributors" is a comma separated list of wp.org/wp-plugins.org usernames
-*   "Tags" is a comma separated list of tags that apply to the plugin
-*   "Requires at least" is the lowest version that the plugin will work on
-*   "Tested up to" is the highest version that you've *successfully used to test the plugin*. Note that it might work on
-higher versions... this is just the highest one you've verified.
-*   Stable tag should indicate the Subversion "tag" of the latest stable version, or "trunk," if you use `/trunk/` for
-stable.
+### Why offload routing to the server?
 
-    Note that the `readme.txt` of the stable tag is the one that is considered the defining one for the plugin, so
-if the `/trunk/readme.txt` file says that the stable tag is `4.3`, then it is `/tags/4.3/readme.txt` that'll be used
-for displaying information about the plugin.  In this situation, the only thing considered from the trunk `readme.txt`
-is the stable tag pointer.  Thus, if you develop in trunk, you can update the trunk `readme.txt` to reflect changes in
-your in-development version, without having that information incorrectly disclosed about the current stable version
-that lacks those changes -- as long as the trunk's `readme.txt` points to the correct stable tag.
+When using WordPress as an enterprise CMS, developers quickly come across the need to implement custom routes.
+Over a project's lifetime, these can aggregate to 50 custom routes or more. Each time a user makes a request to
+your site, WordPress walks through your rules and applies regular expressions until a matching rule is found, only
+to perform an internal call to index.php afterwards.
 
-    If no stable tag is provided, it is assumed that trunk is stable, but you should specify "trunk" if that's where
-you put the stable version, in order to eliminate any doubt.
+Moving this route matching into your .htaccess will improve routing performance. The more custom rules you have,
+the more the improvement.
+
+As an added bonus, checking your .htaccess into version control will now automatically apply any rules upon
+deployment. Previously, rules had either been manually toggled or asynchronously generated after a deployment.
+
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
-
-e.g.
-
-1. Upload `twt-htaccess-routing.php` to the `/wp-content/plugins/` directory
+1. Upload `twt-htaccess-routing/` to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('twt_htaccess_routing_hook'); ?>` in your templates
+1. Navigate to Settings -> .htaccess Routing
+1. Be happy :)
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= Is it any good? =
 
-An answer to that question.
+Yes.
 
-= What about foo bar? =
-
-Answer to foo bar dilemma.
-
-== Screenshots ==
-
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
 
 == Changelog ==
 
-= 1.0 =
-* A change since the previous version.
-* Another change.
+= 1.0.1 =
+* Fixes an issue in per-directory rewrite prefixes, causing some routes not to be matched properly.
+* Fixes $matches[\d] leftovers in poorly registered routes.
 
-= 0.5 =
-* List versions from most recent at top to oldest at bottom.
+= 1.0.0 =
+* Initial release.
 
 == Upgrade Notice ==
 
-= 1.0 =
-Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
+_none yet_
 
-= 0.5 =
-This version fixes a security related bug.  Upgrade immediately.
+== Authorship ==
 
-== Arbitrary section ==
+This plugin is published by TWT, an agency for digital transformation based in Düsseldorf, Germany. We love
+what we do and create digital success for our customers every day.
+Interested in a position as WordPress developer? [Join us!](www.twt.de/karriere.html)
 
-You may provide arbitrary sections, in the same format as the ones above.  This may be of use for extremely complicated
-plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
-"installation."  Arbitrary sections will be shown below the built-in sections outlined above.
-
-== A brief Markdown Example ==
-
-Ordered list:
-
-1. Some feature
-1. Another feature
-1. Something else about the plugin
-
-Unordered list:
-
-* something
-* something else
-* third thing
-
-Here's a link to [WordPress](http://wordpress.org/ "Your favorite software") and one to [Markdown's Syntax Documentation][markdown syntax].
-Titles are optional, naturally.
-
-[markdown syntax]: http://daringfireball.net/projects/markdown/syntax
-            "Markdown is what the parser uses to process much of the readme file"
-
-Markdown uses email style notation for blockquotes and I've been told:
-> Asterisks for *emphasis*. Double it up  for **strong**.
-
-`<?php code(); // goes in backticks ?>`
